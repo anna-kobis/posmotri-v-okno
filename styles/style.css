@@ -296,12 +296,12 @@ ol {
 .content__video-card {
   display: flex;
   align-items: start;
-  gap: 2px;
   padding: 2px;
 }
 
 .content__video-card-description-container {
   flex-grow: 1;
+  word-break: break-all;
 }
 
 .content__video-card-title {
