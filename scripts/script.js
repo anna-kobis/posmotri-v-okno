@@ -127,7 +127,6 @@ async function waitForReadyVideo(video) {
 function showPreloader(tmp, parent) {
   const node = tmp.content.cloneNode(true);
   parent.append(node);
-  console.log('показал прелоадер');
 }
 
 // Убирает прелоадер из DOM ✅
@@ -136,8 +135,6 @@ function removePreloader(parent, preloaderSelector) {
   if (preloader) {
     preloader.remove();
   }
-
-  console.log('убрал прелоадер');
 }
 
 // Добавляет карточки в контейнер, собирая их из данных API ✅
@@ -156,14 +153,12 @@ function appendCards({ baseUrl, dataArray, cardTmp, container }) {
       .setAttribute('alt', el.description);
     container.append(node);
   });
-  console.log('Сгенерировал карточки');
 }
 
 // Устанавливет внужное видео в контейнер ✅
 function setVideo({ baseUrl, video, videoUrl, posterUrl }) {
   video.setAttribute('src', `${baseUrl}${videoUrl}`);
   video.setAttribute('poster', `${baseUrl}${posterUrl}`);
-  console.log('Подставил видео в основной блок');
 }
 
 // получает данные из формы и сериализует как надо ✅
@@ -175,7 +170,6 @@ function serializeFormData(form) {
     item.checked && acc.push(item.value);
     return acc;
   }, []);
-  console.log('Собрал данные формы в объект');
   return {
     city: city.value,
     timeArray: checkedValuesArray,
@@ -192,7 +186,6 @@ function generateFilterRequest(endpoint, city, timeArray) {
       endpoint += `filters[time_of_day][$eqi]=${timeslot}&`;
     });
   }
-  console.log('Сгенерировал строку адреса запроса в API из данных формы');
   return endpoint;
 }
 
@@ -226,7 +219,6 @@ function chooseCurrentVideo({
         await waitForReadyVideo(mainVideo);
         await delay(preloaderWaitindTime);
         removePreloader(videoContainer, '.preloader');
-        console.log('Переключил видео');
       };
     });
   }
@@ -237,7 +229,6 @@ function showError(container, errorTemplate, errorMessage) {
   const node = errorTemplate.content.cloneNode(true);
   node.querySelector('.error__title').textContent = errorMessage;
   container.append(node);
-  console.log('показал, ошибку');
 }
 
 // вывожу больше видео, если в пагинации больше страниц, чем показано
