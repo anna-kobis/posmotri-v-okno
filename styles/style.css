@@ -301,7 +301,7 @@ ol {
 
 .content__video-card-description-container {
   flex-grow: 1;
-  word-break: break-all;
+  hyphens: auto;
 }
 
 .content__video-card-title {
